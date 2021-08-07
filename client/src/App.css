@@ -1,0 +1,78 @@
+/* Colors:
+    #e6b23b
+    #ffce5c
+    #997218 / rgb(153, 114, 24)
+    #093699
+    #497ae6
+*/
+
+.navbar {
+  background-color: #e6b23b;
+}
+.navbar-button {
+  background-color: rgb(153, 114, 24, 0.7);
+  color: bisque;
+  width: 100px;
+  letter-spacing: 1.5px;
+  box-shadow: 0px 1px 2px 0px rgb(0, 0, 0, 0.5);
+  transition: background-color 0.5s;
+}
+.navbar-button:hover,
+.navbar-button:focus {
+  color: bisque;
+  background-color: rgb(153, 114, 24, 0.4);
+}
+
+.form-button {
+  background-color: #e6b23b;
+  color: rgb(43, 40, 29);
+  width: 100px;
+  letter-spacing: 1.5px;
+}
+
+.card-detail {
+  padding: 15px;
+  height: 90%;
+  width: 600px;
+  margin-top: 30px;
+  box-shadow: 0 0 16px 1px rgba(0, 0, 0, 0.1);
+}
+.card-detail .card-detail-image {
+  margin-top: -100px;
+  /* margin-bottom: 15px; */
+}
+
+.card-detail-image img {
+  width: 275px;
+}
+
+.levitate {
+  box-shadow: 0px 1px 7px 0px rgb(0, 0, 0, 0.5);
+  transition: box-shadow 1s ease-out;
+}
+
+.levitate:hover,
+.levitate:focus {
+  box-shadow: 0px 3px 14px 1px rgb(0, 0, 0, 0.5);
+}
+
+.red-text {
+  color: rgb(207, 56, 56);
+}
+
+.content {
+  margin-top: 8rem;
+}
+
+.color2 {
+  background-color: #093699;
+}
+.color3 {
+  background-color: #ffce5c;
+}
+.color4 {
+  background-color: #497ae6;
+}
+.color5 {
+  background-color: #997218;
+}
