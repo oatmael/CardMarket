@@ -10,21 +10,26 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import Landing from "./components/layout/Landing";
-import Navbar from "./components/layout/Navbar";
+import Navbar from "./components/layout/navbar/Navbar";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
+import AdminDashboard from "./components/dashboard/AdminDashboard";
+import Error404 from "./components/errors/Error404";
+
+import * as Constants from "./constants";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
   const token = localStorage.jwtToken;
+  const user = localStorage.user;
   setAuthToken(token);
   // Decode token and get user info and exp
   const decoded = jwt_decode(token);
   // Set user and isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
+  store.dispatch(setCurrentUser(JSON.parse(user)));
   // Check for expired token
   const currentTime = Date.now() / 1000; // to get in milliseconds
   if (decoded.exp < currentTime) {
@@ -42,12 +47,23 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            </Switch>
+            <div className="content">
+              <Switch>
+                <Route exact path="/" component={Landing} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/login" component={Login} />
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute
+                  exact
+                  path="/admin"
+                  component={AdminDashboard}
+                  roles={[Constants.ROLES.ADMIN]}
+                />
+                <Route>
+                  <Error404 />
+                </Route>
+              </Switch>
+            </div>
           </div>
         </Router>
       </Provider>
