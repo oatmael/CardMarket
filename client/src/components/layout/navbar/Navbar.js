@@ -5,16 +5,26 @@ import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 import RegisterButton from "./RegisterButton";
 import Searchbar from "./Searchbar";
+import AdminDashboardButton from "./AdminDashboardButton";
+import * as Constants from "../../../constants";
+import DashboardButton from "./DashboardButton";
 class Navbar extends Component {
   render() {
-    let loginLogoutButton;
-    let registerButton;
-    const { isAuthenticated } = this.props.auth;
+    let loginLogoutButton,
+      registerButton,
+      dashboardButton,
+      adminDashboardButton;
+    const { isAuthenticated, user } = this.props.auth;
     if (isAuthenticated) {
+      dashboardButton = <DashboardButton />;
       loginLogoutButton = <LogoutButton />;
     } else {
       loginLogoutButton = <LoginButton />;
       registerButton = <RegisterButton />;
+    }
+
+    if (user.role === Constants.ROLES.ADMIN) {
+      adminDashboardButton = <AdminDashboardButton />;
     }
     return (
       <nav className="navbar navbar-light fixed-top levitate px-5 py-3">
@@ -29,8 +39,10 @@ class Navbar extends Component {
             <i className="bi bi-box-seam"></i>
             CardMarket
           </Link>
+          <Searchbar />
           <div className="row">
-            <Searchbar />
+            {adminDashboardButton}
+            {dashboardButton}
             {registerButton}
             {loginLogoutButton}
           </div>

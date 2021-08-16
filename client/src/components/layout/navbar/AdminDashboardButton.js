@@ -1,22 +1,22 @@
 import classNames from "classnames";
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-class RegisterButton extends Component {
+class AdminDashboardButton extends Component {
   render() {
     const { location } = this.props;
-    let currentRoute = location.pathname === "/register" ? true : false;
+    let currentRoute = location.pathname.includes("/admin");
     return (
       <div className="col-auto">
         <Link
-          to="/register"
+          to="/admin"
           className={classNames("navbar-button btn btn-large", {
             active: currentRoute,
           })}
         >
-          Register
+          Admin
         </Link>
       </div>
     );
   }
 }
-export default withRouter(RegisterButton);
+export default withRouter(AdminDashboardButton);

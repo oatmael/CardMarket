@@ -1,14 +1,22 @@
+import classNames from "classnames";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 class LoginButton extends Component {
   render() {
+    const { location } = this.props;
+    let currentRoute = location.pathname === "/login" ? true : false;
     return (
       <div className="col-auto">
-        <Link to="/login" className="navbar-button btn btn-large">
+        <Link
+          to="/login"
+          className={classNames("navbar-button btn btn-large", {
+            active: currentRoute,
+          })}
+        >
           Log In
         </Link>
       </div>
     );
   }
 }
-export default LoginButton;
+export default withRouter(LoginButton);

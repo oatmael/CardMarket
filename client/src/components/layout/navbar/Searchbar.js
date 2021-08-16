@@ -19,7 +19,7 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <form className="col d-flex" onSubmit={this.handleSubmit}>
+      <form className="col d-flex mx-5" onSubmit={this.handleSubmit}>
         <div className="input-group">
           <input
             className="form-control"
