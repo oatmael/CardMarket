@@ -19,6 +19,7 @@ import AdminDashboard from "./components/dashboard/AdminDashboard";
 import Error404 from "./components/errors/Error404";
 
 import * as Constants from "./constants";
+import UserManagement from "./components/admin/UserManagement";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -57,6 +58,12 @@ class App extends Component {
                   exact
                   path="/admin"
                   component={AdminDashboard}
+                  roles={[Constants.ROLES.ADMIN]}
+                />
+                <PrivateRoute
+                  exact
+                  path="/admin/users"
+                  component={UserManagement}
                   roles={[Constants.ROLES.ADMIN]}
                 />
                 <Route>
