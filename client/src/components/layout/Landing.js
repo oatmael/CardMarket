@@ -8,7 +8,7 @@ class Landing extends Component {
         <div className="row">
           <div className="col-12 center-align">
             <div className="col-12 mb-5">
-              <h2 className="float-end">This is the landing page</h2>
+              <h2 className="float-end">Today's trending card:</h2>
             </div>
 
             <div className="row">
